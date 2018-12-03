@@ -1,0 +1,118 @@
+/* 
+* abstract layout styles (move to layout)
+*/
+	$col-grid-padding: 1.5rem;	// flex-items padding
+
+.col-grid-item{
+	margin: $col-grid-padding;
+}
+
+	// col-grid starts at $screen-lg	
+	@media screen and (min-width: $screen-lg){
+		.col-grid{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			
+			.col-grid-item{
+				box-sizing: border-box;
+				flex: 0 1 auto;
+			}	
+			
+			&.col-grid-1 .col-grid-item{
+				width: 100%;
+			}
+			&.col-grid-2 .col-grid-item{
+				width: calc( 50% - #{$col-grid-padding * 2} );  
+			}
+			&.col-grid-3 .col-grid-item{
+				width: calc( (100% / 3) - #{$col-grid-padding * 2} );
+			}	
+		}
+
+	}
+
+/* 
+* modules (move to modules/components)
+*/
+	$color-text: #585858;	// to display alpha variations (move to _config.colors)
+
+	// article module
+	.m-article{
+		&__text{
+			color: lighten( $color-text, 10% );
+		}
+		&__list{
+			color: lighten( $color-text, 10% );
+		}
+	}
+
+	// card module
+	.m-card{
+		border: 1px solid #CECECE;
+		border-radius: .25rem;
+
+		&__banner{
+			width: 100%;
+			height: auto;
+			vertical-align: bottom;		// to avoid --reverse bottom gap 
+		}
+		
+		&__content-area{
+			padding: 2rem;
+		}
+		
+			&__title{
+				margin-bottom: 0;		
+			}
+				&__title-icon{
+					font-size: 1rem;
+					fill: $color-main;
+				}
+			&__sub-title{
+				margin-bottom: 0.5rem;		
+			}
+			&__copy{
+				color: lighten( $color-text, 15% );		
+			}
+		
+
+	}
+		// card reverse modifier
+		.m-card--reverse{
+			display: flex;
+			flex-direction: column;
+			
+			.m-card__img-area{
+				order: 1;
+			}
+		}
+
+		// card minimal modifier
+		.m-card--minimal{
+			.m-card__img-area,
+			.m-card__copy,
+			.m-card__actions{
+				display: none;
+			}
+			.m-card__title{
+				display: initial;
+			}
+		}
+
+
+	// button modules
+		// button actions
+	.btn-action{
+		background-color: $color-main;
+		color: $color-main-text;	
+	}
+		// button outwards
+	.btn-outward{
+		color: inherit;	
+	}
+		// button icon
+	.btn__title-icon{
+		vertical-align: text-top;
+	}
